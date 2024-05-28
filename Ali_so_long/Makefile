@@ -9,7 +9,7 @@ LIBFT_LIB	=	$(LIBFT_PATH)/$(LIBFT_FILE)
 
 SO_LONG_SRC	=	srcs/so_long.c
 
-SO_LONG_OBJ	=	$(CLIENT_SRC:.c=.o)
+SO_LONG_OBJ	=	$(SO_LONG_SRC:.c=.o)
 
 
 .c.o:
