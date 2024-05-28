@@ -10,7 +10,7 @@ LIBFT_LIB	=	$(LIBFT_PATH)/$(LIBFT_FILE)
 MLX_PATH	=	.minilibx-linux
 MLX_FLAGS   =   -lX11 -lXext -fPIE
 MLX_FILE	=	libmlx.a
-MLX_LIB	=	$(MLX_PATH)/$(MLX_FILE)
+MLX_LIB		=	$(MLX_PATH)/$(MLX_FILE)
 MLX_EX      =   $(MLX_LIB) $(MLX_FLAGS)
 
 
