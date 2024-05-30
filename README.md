@@ -9,8 +9,11 @@ https://github.com/jotavare/42-resources?tab=readme-ov-file#so_long
 Info sur so_long + minilibx : 
 
 https://reactive.so/post/42-a-comprehensive-guide-to-so_long
+
 https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html
+
 https://pulgamecanica.herokuapp.com/posts/minilibx-tutorial
+
 https://github.com/pulgamecanica/42Course/tree/main/42Documentation (mlx docummentation)
 
 https://reactive.so/post/42-a-comprehensive-guide-to-so_long (guide so_long)
