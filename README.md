@@ -17,6 +17,10 @@ https://github.com/pulgamecanica/42Course/tree/main/42Documentation (mlx documme
 Checklist to start the game : 
 
 Game checklist :
+
 [] Create a window using MiniLibX
+
     [] Create the required structure to store all the necessary information
+
 [] Load all the required sprites (images) for your game and store them into memory
+
