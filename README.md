@@ -13,6 +13,10 @@ https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html
 https://pulgamecanica.herokuapp.com/posts/minilibx-tutorial
 https://github.com/pulgamecanica/42Course/tree/main/42Documentation (mlx docummentation)
 https://reactive.so/post/42-a-comprehensive-guide-to-so_long (guide so_long)
+https://www.piskelapp.com/ (create pixel art)
+https://www.freecodecamp.org/news/flood-fill-algorithm-explained/ (parsing the map)
+https://en.wikipedia.org/wiki/Flood_fill (algo for parsing the map)
+
 
 
 Road map : 
