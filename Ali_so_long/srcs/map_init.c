@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:12:20 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/04 15:32:42 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/04 16:30:40 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	ft_map_init(t_data game, char *path)
 		printf("Line: %s\n", line);
 		free(line);
 	}
+	
 	close(fd);
 }

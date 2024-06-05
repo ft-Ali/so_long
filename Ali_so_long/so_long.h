@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/04 15:31:23 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/04 16:26:47 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_map
 {
 	int		width;
 	int		height;
+	char	**map;
 }			t_map;
 
 void		ft_map_init(t_data game, char *path);

@@ -6,16 +6,16 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 11:38:52 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/04 15:32:14 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/04 15:40:32 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void ft_check_map(t_map *map)
+/* void ft_check_map(t_map *map)
 {
 	int i = 0;
 	int j = 0;
 
 	
-}
+} */
