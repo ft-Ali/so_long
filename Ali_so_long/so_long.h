@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/05 17:52:35 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:28:53 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ typedef struct s_map
 
 }			t_map;
 
-void		ft_map_init(t_map *game, char *file);
-void		ft_map_malloc(t_map *game, char *path);
-void		ft_map_exist(char *file);
+void		initialize_map(t_map *game, char *file);
+void		initialize_and_check_map(t_map *game, char *path);
 void		print_map(t_map *game);
+void		check_map_rectangle(t_map *game);
 
 #endif

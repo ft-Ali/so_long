@@ -6,13 +6,13 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:12:20 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/05 17:55:53 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:31:34 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_map_init(t_map *game, char *file)
+void	initialize_map(t_map *game, char *file)
 {
 	int		map_fd;
 	char	*line_map;
@@ -40,23 +40,48 @@ void	ft_map_init(t_map *game, char *file)
 
 void	print_map(t_map *game)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	if (!game->map)
 	{
 		ft_printf("Map is not initialized\n");
 		return ;
 	}
 	ft_printf("Map:\n");
-	while(game->map[i])
+	while (game->map[i])
 		ft_printf("%s\n", game->map[i++]);
-	
 }
 
-void	ft_map_malloc(t_map *game, char *path)
+void	check_map_rectangle(t_map *game)
+{
+	int	i;
+	int	width;
+	int	current_width;
+
+	i = 1;
+	if (!game->map || game->height == 0)
+		return ;
+	width = ft_strlen(game->map[0]);
+	while (game->map[i])
+	{
+		current_width = ft_strlen(game->map[i]);
+		if (current_width != width)
+		{
+			ft_printf(RED "Map is not rectangular\n");
+			exit(0);
+		}
+		i++;
+	}
+	ft_printf(GREEN "Map is valid\n");
+}
+
+void	initialize_and_check_map(t_map *game, char *path)
 {
 	game->map = NULL;
 	game->height = 0;
 	game->width = 0;
-	ft_map_init(game, path);
+	initialize_map(game, path);
+	check_map_rectangle(game);
 	print_map(game);
 }
