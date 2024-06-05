@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/04 16:26:47 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/05 17:52:35 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,49 @@
 # include <stdio.h>
 # include <unistd.h>
 
-typedef struct s_data
+# define WALL '1'
+# define FLOOR '0'
+# define COINS 'C'
+# define PLAYER 'P'
+# define MAP_EXIT 'E'
+
+# define GREEN "\033[0;32m"
+# define RED "\033[1;31m"
+# define GREY "\033[0;90m"
+# define CYAN "\033[1;96m"
+# define RESET "\033[0m"
+
+# define WALL '1'
+# define FLOOR '0'
+# define COINS 'C'
+# define PLAYER 'P'
+# define MAP_EXIT 'E'
+
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+
+/* typedef struct s_data
 {
-	int		fd;
 	void	*mlx_ptr;
 	void	*win_ptr;
 
-}			t_data;
+}			t_data; */
 
 typedef struct s_map
 {
 	int		width;
 	int		height;
 	char	**map;
+	void	*mlx_ptr;
+	void	*win_ptr;
+
 }			t_map;
 
-void		ft_map_init(t_data game, char *path);
+void		ft_map_init(t_map *game, char *file);
+void		ft_map_malloc(t_map *game, char *path);
+void		ft_map_exist(char *file);
+void		print_map(t_map *game);
 
 #endif
