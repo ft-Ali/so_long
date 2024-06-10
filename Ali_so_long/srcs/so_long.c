@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:03:16 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/05 18:29:57 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:09:42 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,18 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_printf("Usage: %s <map_file>\n", argv[0]);
-		return (1);
+		ft_printf(RED "Usage: %s <map_file>\n", argv[0]);
+		return (0);
 	}
 	initialize_and_check_map(&game, argv[1]);
 	game.mlx_ptr = mlx_init();
-	game.win_ptr = mlx_new_window(game.mlx_ptr, 1920, 1080, "so_long");
+	game.win_ptr = mlx_new_window(game.mlx_ptr, 600, 600, "so_long");
+	if(!game.win_ptr)
+	{
+		ft_printf(RED "Mlx failed to open");
+		free_map(&game);
+		return (0);
+	}
 	mlx_loop(game.mlx_ptr);
-	free(game.map);
-
+	free_map(&game);
 }

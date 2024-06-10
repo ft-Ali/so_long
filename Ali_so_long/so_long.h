@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/05 18:28:53 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/10 14:33:19 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@
 # define GREY "\033[0;90m"
 # define CYAN "\033[1;96m"
 # define RESET "\033[0m"
-
-# define WALL '1'
-# define FLOOR '0'
-# define COINS 'C'
-# define PLAYER 'P'
-# define MAP_EXIT 'E'
 
 # define KEY_W 119
 # define KEY_A 97
@@ -64,5 +58,10 @@ void		initialize_map(t_map *game, char *file);
 void		initialize_and_check_map(t_map *game, char *path);
 void		print_map(t_map *game);
 void		check_map_rectangle(t_map *game);
+void		free_map(t_map *game);
+void		check_border_colum(t_map *game);
+void		ft_empty(t_map *game);
+void		handle_valid_message(const char *msg);
+void		handle_error(t_map *game, const char *msg);
 
 #endif
