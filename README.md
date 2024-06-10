@@ -36,8 +36,8 @@ Road map :
     - [x] Is the map rectangular ?
       - [x] All the lines should be the same length.
     - [x] Is there something in the map file ?
-    - [ ] Is the map enclosed in walls ?
-      - [ ] Check the first and last lines and columns, they should all be 1
+    - [x] Is the map enclosed in walls ?
+      - [x] Check the first and last lines and columns, they should all be 1
     - [ ] Is there only one exit ?
       - [ ] Simply count how many E you find on the map.
     - [ ] Is there only one start position ?
