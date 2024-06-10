@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:12:20 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/10 15:09:22 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:07:36 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	check_border_colum(t_map *game)
 {
 	int	i;
 	int	width;
-	int height;
+	int	height;
 
 	i = 0;
 	width = ft_strlen(game->map[0]);
@@ -96,6 +96,7 @@ void	initialize_and_check_map(t_map *game, char *path)
 	game->width = 0;
 	game->win_ptr = NULL;
 	game->mlx_ptr = NULL;
+	check_file_extension(game, path);
 	initialize_map(game, path);
 	check_map_rectangle(game);
 	check_border_colum(game);

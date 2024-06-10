@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/10 14:33:19 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:06:29 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ void		check_border_colum(t_map *game);
 void		ft_empty(t_map *game);
 void		handle_valid_message(const char *msg);
 void		handle_error(t_map *game, const char *msg);
+void		check_file_extension(t_map *game, char *file);
 
 #endif
