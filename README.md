@@ -20,6 +20,8 @@ https://reactive.so/post/42-a-comprehensive-guide-to-so_long (guide so_long)
 
 https://www.piskelapp.com/ (create pixel art)
 
+https://itch.io/game-assets/free/tag-sprites (assets)
+
 https://www.freecodecamp.org/news/flood-fill-algorithm-explained/ (parsing the map)
 
 https://en.wikipedia.org/wiki/Flood_fill (algo for parsing the map)
