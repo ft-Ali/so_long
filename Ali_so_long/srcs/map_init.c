@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:12:20 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/10 16:07:36 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:37:00 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ void	initialize_map(t_map *game, char *file)
 	if (map_fd == -1)
 		handle_error(game, "Map does not exist");
 	line_map = ft_strdup("");
-	while ((line_tmp = get_next_line(map_fd)) != NULL)
+	line_tmp = get_next_line(map_fd);
+	while (line_tmp != NULL)
 	{
 		line_map = ft_freejoin(line_map, line_tmp, ft_strlen(line_map),
 				ft_strlen(line_tmp));
 		free(line_tmp);
 		game->height++;
+		line_tmp = get_next_line(map_fd);
 	}
 	close(map_fd);
 	game->map = ft_split(line_map, '\n');
