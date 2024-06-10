@@ -30,7 +30,7 @@ Road map :
             
             - Map
       
-  - [ ] Parse the map
+  - [-] Parse the map
     - [ ] When parsing the map you can already check some errors, before even going further
     - [ ] Does the map file exist ?
     - [ ] Is the map rectangular ?
