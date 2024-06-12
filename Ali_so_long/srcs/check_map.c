@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 11:38:52 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/12 11:59:02 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:53:50 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,28 +56,65 @@ void	check_border_colum(t_map *game)
 		i++;
 	}
 }
+
 void	check_map_valid(t_map *game)
 {
-	int i;
-	int j;
-	char *map_character;
+	int		i;
+	int		j;
+	char	*map_character;
 
 	map_character = "10PEC";
 	i = 0;
-
 	while (game->map[i])
 	{
 		j = 0;
 		while (game->map[i][j])
 		{
 			if (!ft_strchr(map_character, game->map[i][j]))
-				handle_error(game, "Map should be only composed with Floor,Wall, Player, Exit, Coins (10PEC)");
+				handle_error(game, "Map should be only composed with(10PEC)");
 			j++;
 		}
 		i++;
 	}
 }
 
-/*************
-check s'il y a au moins 1 exit, 1 player, 1 coins et les compter
-*************/
+void	check_game_info_utils(t_map *game, int exit, int collectibles,
+		int spawn)
+{
+	if (exit != 1)
+		handle_error(game, "should have only one exit");
+	if (spawn != 1)
+		handle_error(game, "should have only one spawn");
+	if (collectibles < 1)
+		handle_error(game, "should be at least one collectibles");
+}
+
+void	check_game_info(t_map *game)
+{
+	int	i = 0;
+	int	j;
+	int	exit;
+	int	collectibles;
+	int	spawn;
+
+	i = 0;
+	exit = 0;
+	collectibles = 0;
+	spawn = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == COLLECTIBLES)
+				collectibles++;
+			else if (game->map[i][j] == MAP_EXIT)
+				exit++;
+			else if (game->map[i][j] == PLAYER)
+				spawn++;
+			j++;
+		}
+		i++;
+	}
+	check_game_info_utils(game, exit, collectibles, spawn);
+}

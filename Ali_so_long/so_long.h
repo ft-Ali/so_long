@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/12 11:03:02 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:51:24 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define WALL '1'
 # define FLOOR '0'
-# define COINS 'C'
+# define COLLECTIBLES 'C'
 # define PLAYER 'P'
 # define MAP_EXIT 'E'
 
@@ -65,5 +65,8 @@ void		handle_valid_message(const char *msg);
 void		handle_error(t_map *game, const char *msg);
 void		check_file_extension(t_map *game, char *file);
 void		check_map_valid(t_map *game);
+void		check_game_info(t_map *game);
+void		check_game_info_utils(t_map *game, int exit, int collectibles,
+				int spawn);
 
 #endif
