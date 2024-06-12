@@ -40,13 +40,13 @@ Road map :
     - [x] Is there something in the map file ?
     - [x] Is the map enclosed in walls ?
       - [x] Check the first and last lines and columns, they should all be 1 (WALL)
-    - [ ] Is there only one exit ?
-      - [ ] Simply count how many E you find on the map.
-    - [ ] Is there only one start position ?
-      - [ ] Simply count how many P you find on the map.
-    - [ ] Is there at least one collectibles ?
-      - [ ]  Simply count how many C you find on the map.
-
+    - [x] Is there only one exit ?
+      - [x] Simply count how many E you find on the map.
+    - [x] Is there only one start position ?
+      - [x] Simply count how many P you find on the map.
+    - [x] Is there at least one collectibles ?
+      - [x]  Simply count how many C you find on the map.
+      - [ ] Check if there is a valid path to exit and collect (flood fill)
                - Game checklist :
 
    - [ ] Create a window using MiniLibX
