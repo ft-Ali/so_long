@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 11:38:52 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/12 14:53:50 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/12 15:01:29 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ void	check_game_info(t_map *game)
 	spawn = 0;
 	while (game->map[i])
 	{
-		j = 0;
-		while (game->map[i][j])
+		j = -1;
+		while (game->map[i][++j])
 		{
 			if (game->map[i][j] == COLLECTIBLES)
 				collectibles++;
@@ -112,7 +112,6 @@ void	check_game_info(t_map *game)
 				exit++;
 			else if (game->map[i][j] == PLAYER)
 				spawn++;
-			j++;
 		}
 		i++;
 	}
