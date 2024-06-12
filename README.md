@@ -47,7 +47,8 @@ Road map :
     - [x] Is there at least one collectibles ?
       - [x]  Simply count how many C you find on the map.
       - [ ] Check if there is a valid path to exit and collect (flood fill)
-               - Game checklist :
+
+             - Game checklist :
 
    - [ ] Create a window using MiniLibX
       - [ ] Create the required structure to store all the necessary information
