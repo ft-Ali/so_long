@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/12 14:51:24 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/12 15:52:43 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_map
 {
 	int		width;
 	int		height;
+	int		x;
+	int		y;
 	char	**map;
 	void	*mlx_ptr;
 	void	*win_ptr;

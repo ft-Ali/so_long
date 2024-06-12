@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:12:20 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/12 14:02:28 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/12 15:53:41 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	initialize_and_check_map(t_map *game, char *path)
 	game->width = 0;
 	game->win_ptr = NULL;
 	game->mlx_ptr = NULL;
+	game->y = 0;
+	game->x = 0;
 	check_file_extension(game, path);
 	initialize_map(game, path);
 	check_map_valid(game);
