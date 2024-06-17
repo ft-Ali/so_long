@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 11:38:52 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/12 15:01:29 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:40:00 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,27 +93,21 @@ void	check_game_info(t_map *game)
 {
 	int	i = 0;
 	int	j;
-	int	exit;
-	int	collectibles;
-	int	spawn;
 
 	i = 0;
-	exit = 0;
-	collectibles = 0;
-	spawn = 0;
 	while (game->map[i])
 	{
 		j = -1;
 		while (game->map[i][++j])
 		{
 			if (game->map[i][j] == COLLECTIBLES)
-				collectibles++;
+				game->collectibles++;
 			else if (game->map[i][j] == MAP_EXIT)
-				exit++;
+				game->exit++;
 			else if (game->map[i][j] == PLAYER)
-				spawn++;
+				game->spawn++;
 		}
 		i++;
 	}
-	check_game_info_utils(game, exit, collectibles, spawn);
+	check_game_info_utils(game, game->exit, game->collectibles, game->spawn);
 }

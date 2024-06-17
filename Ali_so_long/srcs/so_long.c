@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:03:16 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/12 10:47:02 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/17 12:57:38 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_printf(RED "Usage: %s <map_file>\n", argv[0]);
+		ft_printf(RED "Usage: %s <map_dir>/<map_file>\n" RESET, argv[0]);
 		return (0);
 	}
 	initialize_and_check_map(&game, argv[1]);
