@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:12:20 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/17 13:12:54 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:33:47 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	initialize_map(t_map *game, char *file)
 
 void	initialize_and_check_map(t_map *game, char *path)
 {
+	char	**map_copy;
+
 	game->map = NULL;
 	game->height = 0;
 	game->width = 0;
@@ -59,4 +61,7 @@ void	initialize_and_check_map(t_map *game, char *path)
 	check_map_rectangle(game);
 	check_border_colum(game);
 	print_map(game);
+	map_copy = ft_cpy(game->map, game->height);
+	print_cpy(map_copy);
+	free_map_cpy(map_copy, game->height);
 }

@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 11:38:52 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/13 11:40:00 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/17 14:57:59 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	check_game_info(t_map *game)
 {
 	int	i = 0;
 	int	j;
-
 	i = 0;
 	while (game->map[i])
 	{

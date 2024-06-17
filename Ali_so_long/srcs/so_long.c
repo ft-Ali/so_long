@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:03:16 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/17 12:57:38 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:42:29 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,23 @@ void	print_map(t_map *game)
 	ft_printf("Map:\n");
 	while (game->map[i])
 		ft_printf(GREEN "%s\n" RESET, game->map[i++]);
+}
+
+void	print_cpy(char **cpy)
+{
+	int	i;
+
+	i = 0;
+	if (!cpy)
+	{
+		ft_printf("Rien dedans donc exit 0");
+		exit(0);
+	}
+	while (cpy[i])
+	{
+		printf(CYAN "%s\n" RESET, cpy[i]);
+		i++;
+	}
 }
 
 int	main(int argc, char **argv)

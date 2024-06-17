@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/12 17:55:25 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:33:50 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ typedef struct s_map
 
 }			t_map;
 
-typedef struct s_copy
+/* typedef struct s_copy
 {
-	char	**cpy;
+	char			**cpy;
 
-}			t_cpy;
+}					t_cpy; */
 
 void		initialize_map(t_map *game, char *file);
 void		initialize_and_check_map(t_map *game, char *path);
@@ -79,5 +79,8 @@ void		check_map_valid(t_map *game);
 void		check_game_info(t_map *game);
 void		check_game_info_utils(t_map *game, int exit, int collectibles,
 				int spawn);
+void		print_cpy(char **cpy);
+char		**ft_cpy(char **cpy, int height);
+void		free_map_cpy(char **cpy, int height);
 
 #endif
