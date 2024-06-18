@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:12:20 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/17 15:33:47 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:52:50 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,24 @@ void	initialize_map(t_map *game, char *file)
 	free(line_map);
 	ft_empty(game);
 }
-
-void	initialize_and_check_map(t_map *game, char *path)
+void	game_init(t_map *game)
 {
-	char	**map_copy;
-
 	game->map = NULL;
 	game->height = 0;
 	game->width = 0;
 	game->win_ptr = NULL;
 	game->mlx_ptr = NULL;
-	game->y = 0;
-	game->x = 0;
+	game->player_x = 0;
+	game->player_y = 0;
 	game->collectibles = 0;
 	game->spawn = 0;
 	game->exit = 0;
+	game->flood_exit = 0;
+	game->flood_collect = 0;
+}
+void	initialize_and_check_map(t_map *game, char *path)
+{
+	game_init(game);
 	initialize_map(game, path);
 	check_file_extension(game, path);
 	check_map_valid(game);
@@ -61,7 +64,5 @@ void	initialize_and_check_map(t_map *game, char *path)
 	check_map_rectangle(game);
 	check_border_colum(game);
 	print_map(game);
-	map_copy = ft_cpy(game->map, game->height);
-	print_cpy(map_copy);
-	free_map_cpy(map_copy, game->height);
+	find_player(game);
 }

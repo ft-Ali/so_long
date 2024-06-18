@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/17 15:33:50 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:53:01 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,29 @@
 # define PLAYER 'P'
 # define MAP_EXIT 'E'
 
+# define VISITED_TILE 'U'
+
 # define GREEN "\033[0;32m"
 # define RED "\033[1;31m"
 # define GREY "\033[0;90m"
 # define CYAN "\033[1;96m"
 # define RESET "\033[0m"
+# define YELLOW "\033[0;33m"
+# define PURPLE "\033[0;35m"
 
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
 
-/* typedef struct s_data
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-
-}			t_data; */
-
 typedef struct s_map
 {
 	int		width;
 	int		height;
-	int		x;
-	int		y;
+	int		player_x;
+	int		player_y;
+	int		flood_exit;
+	int		flood_collect;
 	int		collectibles;
 	int		exit;
 	int		spawn;
@@ -58,12 +57,6 @@ typedef struct s_map
 	void	*win_ptr;
 
 }			t_map;
-
-/* typedef struct s_copy
-{
-	char			**cpy;
-
-}					t_cpy; */
 
 void		initialize_map(t_map *game, char *file);
 void		initialize_and_check_map(t_map *game, char *path);
@@ -82,5 +75,8 @@ void		check_game_info_utils(t_map *game, int exit, int collectibles,
 void		print_cpy(char **cpy);
 char		**ft_cpy(char **cpy, int height);
 void		free_map_cpy(char **cpy, int height);
+void		flood_fill(t_map *game, char **map, int x, int y);
+void		find_player(t_map *game);
+void		game_init(t_map *game);
 
 #endif
