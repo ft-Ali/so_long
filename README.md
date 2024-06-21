@@ -32,7 +32,7 @@ Road map :
             
             - Map
       
-  - [ ] Parse the map
+  - [x] Parse the map
     - [x] When parsing the map you can already check some errors, before even going further
     - [x] Does the map file exist ?
     - [x] Is the map rectangular ?
@@ -46,7 +46,7 @@ Road map :
       - [x] Simply count how many P you find on the map.
     - [x] Is there at least one collectibles ?
       - [x]  Simply count how many C you find on the map.
-      - [ ] Check if there is a valid path to exit and collect (flood fill)
+      - [x] Check if there is a valid path to exit and collect (flood fill)
 
              - Game checklist :
 
