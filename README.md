@@ -46,7 +46,7 @@ Road map :
       - [x] Simply count how many P you find on the map.
     - [x] Is there at least one collectibles ?
       - [x]  Simply count how many C you find on the map.
-      - [ ] Check if there is a valid path to exit and collect (flood fill)
+      - [x] Check if there is a valid path to exit and collect (flood fill)
 
              - Game checklist :
 
