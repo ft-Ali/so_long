@@ -6,12 +6,23 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:12:20 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/21 15:00:16 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/21 16:48:11 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+/**
+ * @brief Initialise la carte de jeu en lisant le fichier de la carte.
+ *
+ * Cette fonction ouvre le fichier de la carte, lit son contenu et remplit
+ * la structure de jeu avec les informations de la carte. Elle gère également
+ * les erreurs liées à l'ouverture du fichier.
+ *
+ * @param game Pointeur vers la structure du jeu contenant l
+ * es informations sur la carte.
+ * @param file Nom du fichier de la carte.
+ */
 void	initialize_map(t_map *game, char *file)
 {
 	int		map_fd;
@@ -28,7 +39,8 @@ void	initialize_map(t_map *game, char *file)
 	line_tmp = get_next_line(map_fd);
 	while (line_tmp != NULL)
 	{
-		line_map = ft_freejoin(line_map, line_tmp, ft_strlen(line_map), ft_strlen(line_tmp));
+		line_map = ft_freejoin(line_map, line_tmp, ft_strlen(line_map),
+				ft_strlen(line_tmp));
 		free(line_tmp);
 		game->height++;
 		line_tmp = get_next_line(map_fd);
@@ -38,6 +50,16 @@ void	initialize_map(t_map *game, char *file)
 	free(line_map);
 	ft_empty(game);
 }
+
+/**
+ * @brief Initialise les variables du jeu.
+ *
+ * Cette fonction initialise toutes les variables de la structure du jeu
+ * à leurs valeurs par défaut.
+ *
+ * @param game Pointeur vers la structure du jeu contenant 
+ * les informations sur la carte.
+ */
 void	game_init(t_map *game)
 {
 	game->map = NULL;
@@ -54,6 +76,17 @@ void	game_init(t_map *game)
 	game->flood_exit = 0;
 	game->flood_collect = 0;
 }
+
+/**
+ * @brief Initialise et vérifie la carte de jeu.
+ *
+ * Cette fonction appelle les fonctions d'initialisation et de vérification
+ * pour s'assurer que la carte de jeu est correctement configurée et valide.
+ *
+ * @param game Pointeur vers la structure du jeu contenant 
+ * les informations sur la carte.
+ * @param path Chemin vers le fichier de la carte.
+ */
 void	initialize_and_check_map(t_map *game, char *path)
 {
 	game_init(game);

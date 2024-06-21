@@ -6,12 +6,26 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:43:48 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/21 15:01:43 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/21 16:32:26 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+/**
+ * @brief Implémente l'algorithme de remplissage par inondation pour vérifier
+ *        l'accessibilité des éléments sur la carte.
+ *
+ * Cette fonction utilise la récursivité pour parcourir la carte depuis une
+ * position donnée et marque les tuiles visitées. Elle compte les objets
+ * "MAP_EXIT" et "COLLECTIBLES" rencontrés.
+ *
+ * @param game Pointeur vers la structure du jeu contenant les informations
+ *             sur la carte.
+ * @param map  Copie de la carte sur laquelle effectuer le flood fill.
+ * @param x    Position x (colonne) de départ.
+ * @param y    Position y (ligne) de départ.
+ */
 void	flood_fill(t_map *game, char **map, int x, int y)
 {
 	if (map[y][x] == WALL)
@@ -27,6 +41,16 @@ void	flood_fill(t_map *game, char **map, int x, int y)
 	flood_fill(game, map, x, y - 1);
 }
 
+/**
+ * @brief Crée une copie de la carte.
+ *
+ * Cette fonction alloue de la mémoire pour une nouvelle carte et copie
+ * chaque ligne de la carte originale dans la nouvelle carte.
+ *
+ * @param cpy    La carte originale à copier.
+ * @param height La hauteur de la carte original.
+ * @return       Un pointeur vers la nouvelle copie de la carte.
+ */
 char	**ft_cpy(char **cpy, int height)
 {
 	char	**new;
@@ -47,6 +71,15 @@ char	**ft_cpy(char **cpy, int height)
 	return (new);
 }
 
+/**
+ * @brief Libère la mémoire allouée pour une copie de la carte.
+ *
+ * Cette fonction libère chaque ligne de la copie de la carte, puis libère
+ * le tableau de pointeurs.
+ *
+ * @param cpy    La copie de la carte à libérer.
+ * @param height La hauteur de la carte.
+ */
 void	free_map_cpy(char **cpy, int height)
 {
 	int	i;
@@ -58,9 +91,17 @@ void	free_map_cpy(char **cpy, int height)
 		i++;
 	}
 	free(cpy);
-	ft_printf("bien free y'a plus rien\n" RESET);
 }
 
+/**
+ * @brief Trouve la position du joueur sur la carte et initialise le flood fill.
+ *
+ * Cette fonction parcourt la carte pour trouver la position initiale du joueur,
+ * puis appelle la fonction flood_fill à partir de cette position.
+ *
+ * @param game Pointeur vers la structure du jeu contenant les informations
+ *             sur la carte.
+ */
 void	find_player(t_map *game)
 {
 	char	**map_cpy;
@@ -85,22 +126,24 @@ void	find_player(t_map *game)
 	}
 	map_cpy = ft_cpy(game->map, game->height);
 	flood_fill(game, map_cpy, game->player_x, game->player_y);
-	print_map(game);
-	ft_printf("\n");
-	print_cpy(map_cpy);
 	free_map_cpy(map_cpy, game->height);
-	ft_printf(RED "Found exit : %d\n" RESET, game->flood_exit);
-	ft_printf(YELLOW "Visited collectibles: %d\n" RESET, game->flood_collect);
-	ft_printf(YELLOW "Collectibles in total %d\n" RESET, game->collectibles);
-	ft_printf(PURPLE "Pos player \n x %d\n y %d\n" RESET, game->player_x, game->player_y);
-	
-	
 }
-void flood_fill_result(t_map *game)
+
+/**
+ * @brief Vérifie les résultats du flood fill et affiche un message approprié.
+ *
+ * Cette fonction compare les objets collectés et la sortie trouvée avec
+ * les valeurs attendues et affiche un message de validation ou une erreur.
+ *
+ * @param game Pointeur vers la structure du jeu contenant les informations
+ *             sur la carte.
+ */
+void	flood_fill_result(t_map *game)
 {
-	if(game->collectibles == game->flood_collect && game->exit ==  game->flood_exit)
+	if (game->collectibles == game->flood_collect
+		&& game->exit == game->flood_exit)
 		handle_valid_message("All collectibles collected and exit reachable");
-	else 
-		handle_error(game, "Not All collectibles collected or exit not reachable");
+	else
+		handle_error(game,
+			"Not All collectibles collected or exit not reachable");
 }
-	

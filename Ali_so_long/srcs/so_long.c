@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:03:16 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/20 15:11:35 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:43:22 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	print_cpy(char **cpy)
 		i++;
 	}
 }
+
 void	close_display(t_map *game)
 {
 	mlx_destroy_display(game->mlx_ptr);
@@ -48,6 +49,7 @@ void	close_display(t_map *game)
 	free_map(game);
 	exit(0);
 }
+
 int	close_game(t_map *game)
 {
 	// free_img(game);
@@ -56,17 +58,17 @@ int	close_game(t_map *game)
 	return (0);
 }
 
-int    close_window(void *param)
+
+int	close_window(void *param)
 {
-    (void)param;
+	(void)param;
 	exit(0);
-    return (0);
+	return (0);
 }
 
 int	main(int argc, char **argv)
 {
 	t_map	game;
-	
 
 	if (argc != 2)
 	{

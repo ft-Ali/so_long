@@ -6,11 +6,22 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 11:38:52 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/17 14:57:59 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/21 16:10:38 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+/**
+ * @brief Vérifie si la carte est rectangulaire.
+ *
+ * Cette fonction vérifie que chaque,
+ * ligne de la carte a la même longueur
+ * ce qui garantit que la carte est bien rectangulaire.
+ *
+* @param game Pointeur vers la structure du jeu contenant.
+* la carte et d'autres informations 
+ */
 
 void	check_map_rectangle(t_map *game)
 {
@@ -31,6 +42,16 @@ void	check_map_rectangle(t_map *game)
 	}
 }
 
+/**
+ * @brief Vérifie si la carte est bien entourée de murs.
+ *
+ * Cette fonction vérifie que la première et la dernière ligne, ainsi que
+ * la première et la dernière colonne de la carte 
+ * sont entièrement composées de murs.
+ *
+ * @param game Pointeur vers la structure du jeu contenant 
+ * la carte et d'autres informations.
+ */
 void	check_border_colum(t_map *game)
 {
 	int	i;
@@ -40,7 +61,7 @@ void	check_border_colum(t_map *game)
 	i = 0;
 	width = ft_strlen(game->map[0]);
 	height = game->height;
-	if (!game->map[i] || game->height == 1)
+	if (!game->map[i] || game->height == 1 || game->map[0][i] == '\n')
 		handle_error(game, "Map is not initialized");
 	while (i < width)
 	{
@@ -57,6 +78,16 @@ void	check_border_colum(t_map *game)
 	}
 }
 
+/**
+ * @brief Vérifie si les caractères de la carte sont valides.
+ *
+ * Cette fonction vérifie que la carte ne contient que 
+ * des caractères valides
+ * (1, 0, P, E, C).
+ *
+ * @param game Pointeur vers la structure du jeu 
+ * contenant la carte et d'autres informations.
+ */
 void	check_map_valid(t_map *game)
 {
 	int		i;
@@ -78,6 +109,18 @@ void	check_map_valid(t_map *game)
 	}
 }
 
+/**
+ * @brief Vérifie les contraintes du jeu.
+ *
+ * Cette fonction vérifie que la carte contient exactement une sortie, au moins
+ * un objet à collecter et un seul point de départ.
+ *
+ * @param game Pointeur vers la structure du jeu contenant 
+ * la carte et d'autres informations.
+ * @param exit Nombre de sorties trouvées sur la carte.
+ * @param collectibles Nombre d'objets à collecter trouvés sur la carte.
+ * @param spawn Nombre de points de départ trouvés sur la carte.
+ */
 void	check_game_info_utils(t_map *game, int exit, int collectibles,
 		int spawn)
 {
@@ -89,10 +132,21 @@ void	check_game_info_utils(t_map *game, int exit, int collectibles,
 		handle_error(game, "should be at least one collectibles");
 }
 
+/**
+ * @brief Vérifie les informations du jeu.
+ *
+ * Cette fonction compte combien d'objets à collecter, 
+ * de points de départ et de sorties
+ * se trouvent sur la carte.
+ *
+ * @param game Pointeur vers la structure du jeu 
+ * contenant la carte et d'autres informations.
+ */
 void	check_game_info(t_map *game)
 {
-	int	i = 0;
+	int	i;
 	int	j;
+
 	i = 0;
 	while (game->map[i])
 	{
