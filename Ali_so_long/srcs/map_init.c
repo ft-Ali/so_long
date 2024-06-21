@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:12:20 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/18 17:52:50 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:00:16 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	initialize_map(t_map *game, char *file)
 	line_tmp = get_next_line(map_fd);
 	while (line_tmp != NULL)
 	{
-		line_map = ft_freejoin(line_map, line_tmp, ft_strlen(line_map),
-				ft_strlen(line_tmp));
+		line_map = ft_freejoin(line_map, line_tmp, ft_strlen(line_map), ft_strlen(line_tmp));
 		free(line_tmp);
 		game->height++;
 		line_tmp = get_next_line(map_fd);
@@ -46,6 +45,7 @@ void	game_init(t_map *game)
 	game->width = 0;
 	game->win_ptr = NULL;
 	game->mlx_ptr = NULL;
+	game->img_ptr = NULL;
 	game->player_x = 0;
 	game->player_y = 0;
 	game->collectibles = 0;
@@ -63,6 +63,7 @@ void	initialize_and_check_map(t_map *game, char *path)
 	check_game_info(game);
 	check_map_rectangle(game);
 	check_border_colum(game);
-	print_map(game);
 	find_player(game);
+	flood_fill_result(game);
+	free_map(game);
 }

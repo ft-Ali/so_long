@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:03:16 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/17 15:42:29 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:11:35 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,32 @@ void	print_cpy(char **cpy)
 		i++;
 	}
 }
+void	close_display(t_map *game)
+{
+	mlx_destroy_display(game->mlx_ptr);
+	free(game->mlx_ptr);
+	free_map(game);
+	exit(0);
+}
+int	close_game(t_map *game)
+{
+	// free_img(game);
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	close_display(game);
+	return (0);
+}
+
+int    close_window(void *param)
+{
+    (void)param;
+	exit(0);
+    return (0);
+}
 
 int	main(int argc, char **argv)
 {
 	t_map	game;
+	
 
 	if (argc != 2)
 	{
@@ -53,13 +75,15 @@ int	main(int argc, char **argv)
 	}
 	initialize_and_check_map(&game, argv[1]);
 	game.mlx_ptr = mlx_init();
-	game.win_ptr = mlx_new_window(game.mlx_ptr, 600, 600, "so_long");
+	game.win_ptr = mlx_new_window(game.mlx_ptr, 1920, 1080, "so_long");
+	mlx_hook(game.win_ptr, 17, 0, close_window, NULL);
 	if (!game.win_ptr)
 	{
 		ft_printf(RED "Mlx failed to open");
-		free_map(&game);
+		// free_map(&game);
 		return (0);
 	}
 	mlx_loop(game.mlx_ptr);
+	close_game(&game);
 	free_map(&game);
 }

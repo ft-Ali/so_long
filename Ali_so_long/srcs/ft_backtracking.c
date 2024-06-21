@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:43:48 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/18 17:51:15 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:01:43 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	flood_fill(t_map *game, char **map, int x, int y)
 {
-	if (map[y][x] == WALL || map[y][x] == VISITED_TILE)
+	if (map[y][x] == WALL)
 		return ;
 	if (map[y][x] == MAP_EXIT)
 		game->flood_exit++;
 	else if (map[y][x] == COLLECTIBLES)
 		game->flood_collect++;
-	map[y][x] = VISITED_TILE;
+	map[y][x] = WALL;
 	flood_fill(game, map, x + 1, y);
 	flood_fill(game, map, x - 1, y);
 	flood_fill(game, map, x, y + 1);
@@ -85,13 +85,22 @@ void	find_player(t_map *game)
 	}
 	map_cpy = ft_cpy(game->map, game->height);
 	flood_fill(game, map_cpy, game->player_x, game->player_y);
-
-		
-	
-	ft_printf(RED "\nMap after flood_fill:\n" RESET);
+	print_map(game);
+	ft_printf("\n");
 	print_cpy(map_cpy);
 	free_map_cpy(map_cpy, game->height);
 	ft_printf(RED "Found exit : %d\n" RESET, game->flood_exit);
 	ft_printf(YELLOW "Visited collectibles: %d\n" RESET, game->flood_collect);
+	ft_printf(YELLOW "Collectibles in total %d\n" RESET, game->collectibles);
 	ft_printf(PURPLE "Pos player \n x %d\n y %d\n" RESET, game->player_x, game->player_y);
+	
+	
 }
+void flood_fill_result(t_map *game)
+{
+	if(game->collectibles == game->flood_collect && game->exit ==  game->flood_exit)
+		handle_valid_message("All collectibles collected and exit reachable");
+	else 
+		handle_error(game, "Not All collectibles collected or exit not reachable");
+}
+	

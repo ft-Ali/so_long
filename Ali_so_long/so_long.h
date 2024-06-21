@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/18 17:53:01 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/21 14:43:51 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define PLAYER 'P'
 # define MAP_EXIT 'E'
 
-# define VISITED_TILE 'U'
+// # define VISITED_TILE 'U'
 
 # define GREEN "\033[0;32m"
 # define RED "\033[1;31m"
@@ -55,28 +55,43 @@ typedef struct s_map
 	char	**map;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	void	*img_ptr;
 
 }			t_map;
 
-void		initialize_map(t_map *game, char *file);
+/************************************
+				PARSING
+*************************************/
+
+void		game_init(t_map *game);
 void		initialize_and_check_map(t_map *game, char *path);
-void		print_map(t_map *game);
-void		check_map_rectangle(t_map *game);
-void		free_map(t_map *game);
-void		check_border_colum(t_map *game);
-void		ft_empty(t_map *game);
-void		handle_valid_message(const char *msg);
-void		handle_error(t_map *game, const char *msg);
+void		initialize_map(t_map *game, char *file);
 void		check_file_extension(t_map *game, char *file);
 void		check_map_valid(t_map *game);
 void		check_game_info(t_map *game);
 void		check_game_info_utils(t_map *game, int exit, int collectibles,
 				int spawn);
-void		print_cpy(char **cpy);
-char		**ft_cpy(char **cpy, int height);
-void		free_map_cpy(char **cpy, int height);
+void		check_map_rectangle(t_map *game);
+void		check_border_colum(t_map *game);
+
 void		flood_fill(t_map *game, char **map, int x, int y);
 void		find_player(t_map *game);
-void		game_init(t_map *game);
+void		flood_fill_result(t_map *map_cpy);
+char		**ft_cpy(char **cpy, int height);
+void		handle_valid_message(const char *msg);
 
+/************************************
+				ERROR & FREE
+*************************************/
+
+void		ft_empty(t_map *game);
+void		handle_valid_message(const char *msg);
+void		handle_error(t_map *game, const char *msg);
+void		free_map(t_map *game);
+void		free_map_cpy(char **cpy, int height);
+
+int			close_window(void *param);
+
+void		print_map(t_map *game);
+void		print_cpy(char **cpy);
 #endif
