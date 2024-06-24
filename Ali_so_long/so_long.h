@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/21 14:43:51 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:48:30 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_map
 
 void		game_init(t_map *game);
 void		initialize_and_check_map(t_map *game, char *path);
-void		initialize_map(t_map *game, char *file);
+int			initialize_map(t_map *game, char *file);
 void		check_file_extension(t_map *game, char *file);
 void		check_map_valid(t_map *game);
 void		check_game_info(t_map *game);
@@ -73,6 +73,7 @@ void		check_game_info_utils(t_map *game, int exit, int collectibles,
 				int spawn);
 void		check_map_rectangle(t_map *game);
 void		check_border_colum(t_map *game);
+int			check_map_height(char **map);
 
 void		flood_fill(t_map *game, char **map, int x, int y);
 void		find_player(t_map *game);

@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 11:38:52 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/21 16:10:38 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:51:10 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
  * ligne de la carte a la même longueur
  * ce qui garantit que la carte est bien rectangulaire.
  *
-* @param game Pointeur vers la structure du jeu contenant.
-* la carte et d'autres informations 
+ * @param game Pointeur vers la structure du jeu contenant.
+ * la carte et d'autres informations 
  */
 
 void	check_map_rectangle(t_map *game)
@@ -61,7 +61,8 @@ void	check_border_colum(t_map *game)
 	i = 0;
 	width = ft_strlen(game->map[0]);
 	height = game->height;
-	if (!game->map[i] || game->height == 1 || game->map[0][i] == '\n')
+	ft_printf("%d\n", game->height);
+	if (!game->map[i] || game->height == 1)
 		handle_error(game, "Map is not initialized");
 	while (i < width)
 	{

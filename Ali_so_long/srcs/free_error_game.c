@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 14:40:58 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/21 16:21:15 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:03:44 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ void	ft_empty(t_map *game)
 	int	i;
 
 	i = 0;
-	if (game->map[i] == NULL || game->map[0][i] == '\n')
+	if (game->map[i] == NULL)
 		handle_error(game, "Map is empty");
 }
