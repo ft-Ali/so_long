@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:12:20 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/26 13:10:58 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:15:19 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	initialize_map(t_map *game, char *file)
 	char	*line_map;
 	char	*line_tmp;
 
-	map_fd = open(file, __O_DIRECTORY);
+	map_fd = open(file, O_DIRECTORY);
 	if (map_fd != -1)
 		(handle_error(game, "Error directory OR Map does not exist"),
 			close(map_fd));
