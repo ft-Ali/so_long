@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 14:40:58 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/24 15:03:44 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:48:43 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * Cette fonction libère toute la mémoire allouée pour la carte,
  * la fenêtre graphique, et la structure mlx.
  *
- * @param game Pointeur vers la structure du jeu contenant la carte 
+ * @param game Pointeur vers la structure du jeu contenant la carte
  *             et d'autres informations.
  */
 void	free_map(t_map *game)
@@ -40,7 +40,7 @@ void	free_map(t_map *game)
  * Cette fonction affiche un message d'erreur, libère les ressources allouées,
  * et quitte le programme.
  *
- * @param game Pointeur vers la structure du jeu contenant la carte 
+ * @param game Pointeur vers la structure du jeu contenant la carte
  *             et d'autres informations.
  * @param msg  Message d'erreur à afficher.
  */

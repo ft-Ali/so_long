@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/24 15:48:30 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:09:02 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include ".libft/libft.h"
 # include ".libft/printf/ft_printf.h"
 # include ".minilibx-linux/mlx.h"
+# include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
 

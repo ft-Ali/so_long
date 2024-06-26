@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 11:38:52 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/24 15:51:10 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:13:42 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * ce qui garantit que la carte est bien rectangulaire.
  *
  * @param game Pointeur vers la structure du jeu contenant.
- * la carte et d'autres informations 
+ * la carte et d'autres informations
  */
 
 void	check_map_rectangle(t_map *game)
@@ -30,8 +30,6 @@ void	check_map_rectangle(t_map *game)
 	int	current_width;
 
 	i = 1;
-	if (!game->map || game->height == 0)
-		return ;
 	width = ft_strlen(game->map[0]);
 	while (game->map[i])
 	{
@@ -46,10 +44,10 @@ void	check_map_rectangle(t_map *game)
  * @brief Vérifie si la carte est bien entourée de murs.
  *
  * Cette fonction vérifie que la première et la dernière ligne, ainsi que
- * la première et la dernière colonne de la carte 
+ * la première et la dernière colonne de la carte
  * sont entièrement composées de murs.
  *
- * @param game Pointeur vers la structure du jeu contenant 
+ * @param game Pointeur vers la structure du jeu contenant
  * la carte et d'autres informations.
  */
 void	check_border_colum(t_map *game)
@@ -61,7 +59,6 @@ void	check_border_colum(t_map *game)
 	i = 0;
 	width = ft_strlen(game->map[0]);
 	height = game->height;
-	ft_printf("%d\n", game->height);
 	if (!game->map[i] || game->height == 1)
 		handle_error(game, "Map is not initialized");
 	while (i < width)
@@ -82,11 +79,11 @@ void	check_border_colum(t_map *game)
 /**
  * @brief Vérifie si les caractères de la carte sont valides.
  *
- * Cette fonction vérifie que la carte ne contient que 
+ * Cette fonction vérifie que la carte ne contient que
  * des caractères valides
  * (1, 0, P, E, C).
  *
- * @param game Pointeur vers la structure du jeu 
+ * @param game Pointeur vers la structure du jeu
  * contenant la carte et d'autres informations.
  */
 void	check_map_valid(t_map *game)
@@ -116,7 +113,7 @@ void	check_map_valid(t_map *game)
  * Cette fonction vérifie que la carte contient exactement une sortie, au moins
  * un objet à collecter et un seul point de départ.
  *
- * @param game Pointeur vers la structure du jeu contenant 
+ * @param game Pointeur vers la structure du jeu contenant
  * la carte et d'autres informations.
  * @param exit Nombre de sorties trouvées sur la carte.
  * @param collectibles Nombre d'objets à collecter trouvés sur la carte.
@@ -136,11 +133,11 @@ void	check_game_info_utils(t_map *game, int exit, int collectibles,
 /**
  * @brief Vérifie les informations du jeu.
  *
- * Cette fonction compte combien d'objets à collecter, 
+ * Cette fonction compte combien d'objets à collecter,
  * de points de départ et de sorties
  * se trouvent sur la carte.
  *
- * @param game Pointeur vers la structure du jeu 
+ * @param game Pointeur vers la structure du jeu
  * contenant la carte et d'autres informations.
  */
 void	check_game_info(t_map *game)
