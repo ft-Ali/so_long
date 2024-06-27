@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/26 13:09:02 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:39:17 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define PLAYER 'P'
 # define MAP_EXIT 'E'
 
-// # define VISITED_TILE 'U'
+# define PIXEL 32
 
 # define GREEN "\033[0;32m"
 # define RED "\033[1;31m"
@@ -42,6 +42,16 @@
 # define KEY_S 115
 # define KEY_D 100
 
+typedef struct s_img
+{
+	void	*img_ptr;
+	void	*tex_player;
+	void	*tex_collectibles;
+	void	*tex_exit;
+	void	*mlx_ptr;
+	void	*win_ptr;
+}			t_img;
+
 typedef struct s_map
 {
 	int		width;
@@ -54,9 +64,9 @@ typedef struct s_map
 	int		exit;
 	int		spawn;
 	char	**map;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
+	int		pixel;
+
+	t_img	data;
 
 }			t_map;
 
@@ -96,4 +106,11 @@ int			close_window(void *param);
 
 void		print_map(t_map *game);
 void		print_cpy(char **cpy);
+
+/************************************
+				IMG
+*************************************/
+void		init_texture(t_img *img);
+void	init_img(t_map *game);
+void		draw_map(t_map *game);
 #endif

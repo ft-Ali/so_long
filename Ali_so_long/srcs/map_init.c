@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:12:20 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/26 13:15:19 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:42:44 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,15 @@ void	game_init(t_map *game)
 	game->map = NULL;
 	game->height = 0;
 	game->width = 0;
-	game->win_ptr = NULL;
-	game->mlx_ptr = NULL;
-	game->img_ptr = NULL;
 	game->player_x = 0;
 	game->player_y = 0;
 	game->collectibles = 0;
 	game->spawn = 0;
 	game->exit = 0;
-	game->flood_exit = 0;
 	game->flood_collect = 0;
+	game->flood_exit = 0;
+	game->data.mlx_ptr = NULL;
+	game->data.win_ptr = NULL;
 }
 
 /**
@@ -108,5 +107,4 @@ void	initialize_and_check_map(t_map *game, char *path)
 	find_player(game);
 	flood_fill_result(game);
 	print_map(game);
-	free_map(game);
 }

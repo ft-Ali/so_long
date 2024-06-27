@@ -14,7 +14,8 @@ MLX_LIB		=	$(MLX_PATH)/$(MLX_FILE)
 MLX_EX      =   $(MLX_LIB) $(MLX_FLAGS)
 
 
-SO_LONG_SRC	=	srcs/so_long.c srcs/check_map.c srcs/map_init.c srcs/free_error_game.c srcs/ft_backtracking.c
+SO_LONG_SRC	=	srcs/so_long.c srcs/check_map.c srcs/map_init.c srcs/free_error_game.c srcs/ft_backtracking.c \
+				srcs/ressources.c
 
 SO_LONG_OBJ	=	$(SO_LONG_SRC:.c=.o)
 

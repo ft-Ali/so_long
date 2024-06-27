@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 11:38:52 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/26 13:13:42 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:46:00 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	check_border_colum(t_map *game)
 	i = 0;
 	width = ft_strlen(game->map[0]);
 	height = game->height;
+	game->width = width;
 	if (!game->map[i] || game->height == 1)
 		handle_error(game, "Map is not initialized");
 	while (i < width)
