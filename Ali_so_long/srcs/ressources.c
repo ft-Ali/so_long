@@ -6,47 +6,46 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:05:23 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/27 18:40:32 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:57:21 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	init_texture(t_img *img)
+void	init_img(t_img *img, t_map *game)
 {
-	// ft_bzero(img,sizeof(t_img));
-	// img->pixel = PIXEL;
-	img->img_ptr = NULL;
-	img->tex_player = NULL;
-	img->tex_collectibles = NULL;
-	img->tex_exit = NULL;
-	img->mlx_ptr = NULL;
-	img->win_ptr = NULL;
+	img->wall_img = mlx_xpm_file_to_image(img->mlx_ptr, "img/wall.xpm",
+			&game->pixel, &game->pixel);
+	if (img->wall_img == NULL)
+		handle_error(game, "Failed to load wall img..");
+	img->floor_img = mlx_xpm_file_to_image(img->mlx_ptr, "img/floor.xpm",
+			&game->pixel, &game->pixel);
+	if (img->floor_img == NULL)
+		handle_error(game, "Failed to load floor img..");
+	img->player_img = mlx_xpm_file_to_image(img->mlx_ptr, "img/cat.xpm",
+			&game->pixel, &game->pixel);
+	if (img->player_img == NULL)
+		handle_error(game, "Failed to load player img..");
+	img->collectibles_img = mlx_xpm_file_to_image(img->mlx_ptr,
+			"img/coins.xpm", &game->pixel, &game->pixel);
+	if (img->collectibles_img == NULL)
+		handle_error(game, "Failed to load collectibles img..");
+	img->exit_img = mlx_xpm_file_to_image(img->mlx_ptr,
+			"img/exit.xpm", &game->pixel, &game->pixel);
+	if (img->exit_img == NULL)
+		handle_error(game, "Failed to load exit img..");
 }
 
-void	init_img(t_map *game)
+void	draw_map(t_map *game, t_img *img)
 {
-	game->data.tex_collectibles = mlx_xpm_file_to_image(game->data.mlx_ptr,
-			"pokeball.xpm", &game->pixel, &game->pixel);
-	if (game->data.tex_collectibles == NULL)
-		printf("ERROR \n");
-	if(game->data.mlx_ptr == NULL)
-		printf("ERROR MLX\n");
-	// printf("Error pixel %d\n", img->pixel);
-}
-
-void	draw_map(t_map *game)
-{
-	int x;
-	int y;
-	int i;
-	int j;
+	int	x;
+	int	y;
+	int	i;
+	int	j;
 
 	x = 0;
 	y = 0;
 	i = 0;
-	printf(" width %d\n", game->width);
-	printf(" width %d\n", game->height);
 	while (i < game->height)
 	{
 		j = 0;
@@ -54,12 +53,67 @@ void	draw_map(t_map *game)
 		{
 			x = j * game->pixel;
 			y = i * game->pixel;
-			// printf("pixel %d\n", game->pixel);
-			printf("x %d\n", x);
-			printf("y %d\n", y);
-			if (game->map[i][j] == '0')
-				mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
-					game->data.tex_collectibles, x, y);
+			if (game->map[i][j] == WALL)
+				mlx_put_image_to_window(img->mlx_ptr, img->win_ptr,
+					img->wall_img, x, y);
+			if (game->map[i][j] == FLOOR)
+				mlx_put_image_to_window(img->mlx_ptr, img->win_ptr,
+					img->floor_img, x, y);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	draw_map_2(t_map *game, t_img *img)
+{
+	int	x;
+	int	y;
+	int	i;
+	int	j;
+
+	x = 0;
+	y = 0;
+	i = 0;
+	while (i < game->height)
+	{
+		j = 0;
+		while (j < game->width)
+		{
+			x = j * game->pixel;
+			y = i * game->pixel;
+			if (game->map[i][j] == PLAYER)
+				mlx_put_image_to_window(img->mlx_ptr, img->win_ptr,
+					img->player_img, x, y);
+			if (game->map[i][j] == COLLECTIBLES)
+				mlx_put_image_to_window(img->mlx_ptr, img->win_ptr,
+					img->collectibles_img, x, y);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	draw_map_3(t_map *game, t_img *img)
+{
+	int	x;
+	int	y;
+	int	i;
+	int	j;
+
+	x = 0;
+	y = 0;
+	i = 0;
+	while (i < game->height)
+	{
+		j = 0;
+		while (j < game->width)
+		{
+			x = j * game->pixel;
+			y = i * game->pixel;
+			if (game->map[i][j] == MAP_EXIT)
+				mlx_put_image_to_window(img->mlx_ptr, img->win_ptr,
+					img->exit_img, x, y);
 			j++;
 		}
 		i++;

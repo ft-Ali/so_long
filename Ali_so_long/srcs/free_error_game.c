@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 14:40:58 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/27 11:42:26 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/28 11:27:35 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	free_map(t_map *game)
 	i = 0;
 	if (game->map)
 		ft_free_split(game->map);
-	if (game->data.win_ptr)
-		mlx_destroy_window(game->data.mlx_ptr, game->data.win_ptr);
-	if (game->data.mlx_ptr)
-		free(game->data.mlx_ptr);
+	if (game->img.win_ptr)
+		mlx_destroy_window(game->img.mlx_ptr, game->img.win_ptr);
+	if (game->img.mlx_ptr)
+		free(game->img.mlx_ptr);
 }
 
 /**

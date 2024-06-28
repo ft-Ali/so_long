@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:12:20 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/27 17:42:44 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:49:30 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,8 @@ int	check_map_height(char **map)
  */
 void	game_init(t_map *game)
 {
-	game->map = NULL;
-	game->height = 0;
-	game->width = 0;
-	game->player_x = 0;
-	game->player_y = 0;
-	game->collectibles = 0;
-	game->spawn = 0;
-	game->exit = 0;
-	game->flood_collect = 0;
-	game->flood_exit = 0;
-	game->data.mlx_ptr = NULL;
-	game->data.win_ptr = NULL;
+	ft_bzero(game, sizeof(t_map));
+	game->pixel = PIXEL;
 }
 
 /**
@@ -106,5 +96,17 @@ void	initialize_and_check_map(t_map *game, char *path)
 	check_border_colum(game);
 	find_player(game);
 	flood_fill_result(game);
-	print_map(game);
+}
+
+void	print_map(t_map *game)
+{
+	int	i;
+
+	i = 0;
+	if (!game->map[i])
+		handle_error(game, "Map is not initialized");
+	ft_printf(GREEN "Map is valid\n" RESET);
+	ft_printf("Map:\n");
+	while (game->map[i])
+		ft_printf(GREEN "%s\n" RESET, game->map[i++]);
 }

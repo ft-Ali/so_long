@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/27 18:39:17 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:39:13 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,11 @@
 typedef struct s_img
 {
 	void	*img_ptr;
-	void	*tex_player;
-	void	*tex_collectibles;
-	void	*tex_exit;
+	void	*player_img;
+	void	*collectibles_img;
+	void	*exit_img;
+	void	*floor_img;
+	void	*wall_img;
 	void	*mlx_ptr;
 	void	*win_ptr;
 }			t_img;
@@ -65,8 +67,7 @@ typedef struct s_map
 	int		spawn;
 	char	**map;
 	int		pixel;
-
-	t_img	data;
+	t_img	img;
 
 }			t_map;
 
@@ -105,12 +106,13 @@ void		free_map_cpy(char **cpy, int height);
 int			close_window(void *param);
 
 void		print_map(t_map *game);
-void		print_cpy(char **cpy);
 
 /************************************
 				IMG
 *************************************/
 void		init_texture(t_img *img);
-void	init_img(t_map *game);
-void		draw_map(t_map *game);
+void		init_img(t_img *img, t_map *game);
+void		draw_map(t_map *game, t_img *img);
+void		draw_map_2(t_map *game, t_img *img);
+void		draw_map_3(t_map *game, t_img *img);
 #endif
