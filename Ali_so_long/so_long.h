@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:21:03 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/28 15:39:13 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/29 17:56:37 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include ".libft/libft.h"
 # include ".libft/printf/ft_printf.h"
 # include ".minilibx-linux/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -41,6 +43,8 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
+# define ESC 65307
+# define ESC2 33
 
 typedef struct s_img
 {
@@ -60,6 +64,8 @@ typedef struct s_map
 	int		height;
 	int		player_x;
 	int		player_y;
+	int		exit_x;
+	int		exit_y;
 	int		flood_exit;
 	int		flood_collect;
 	int		collectibles;
@@ -67,6 +73,8 @@ typedef struct s_map
 	int		spawn;
 	char	**map;
 	int		pixel;
+	int		collectibles_left;
+	int		step_count;
 	t_img	img;
 
 }			t_map;
@@ -76,6 +84,7 @@ typedef struct s_map
 *************************************/
 
 void		game_init(t_map *game);
+int			check_and_open_file(t_map *game, char *file);
 void		initialize_and_check_map(t_map *game, char *path);
 int			initialize_map(t_map *game, char *file);
 void		check_file_extension(t_map *game, char *file);
@@ -104,15 +113,23 @@ void		free_map(t_map *game);
 void		free_map_cpy(char **cpy, int height);
 
 int			close_window(void *param);
+int			close_game(t_map *game);
 
 void		print_map(t_map *game);
 
 /************************************
 				IMG
 *************************************/
-void		init_texture(t_img *img);
+
 void		init_img(t_img *img, t_map *game);
 void		draw_map(t_map *game, t_img *img);
 void		draw_map_2(t_map *game, t_img *img);
-void		draw_map_3(t_map *game, t_img *img);
+void		draw_map_exit(t_map *game, t_img *img);
+void		draw_all_maps(t_map *game, t_img *img);
+void		free_mlx_img(t_img *img);
+
+int			handle_key(int key, t_map *game);
+void		move_player(t_map *game, int new_x, int new_y);
+void		collect_item(t_map *game, int x, int y);
+
 #endif

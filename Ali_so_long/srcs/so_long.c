@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:03:16 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/28 16:27:48 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/29 18:11:12 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@ void	close_display(t_map *game)
 
 int	close_game(t_map *game)
 {
-	mlx_destroy_window(game->img.mlx_ptr, game->img.win_ptr);
-	close_display(game);
+	if (game->img.mlx_ptr != NULL)
+		mlx_destroy_window(game->img.mlx_ptr, game->img.win_ptr);
+	free_mlx_img(&game->img);
+	if (game->img.win_ptr != NULL)
+		close_display(game);
+	free_map(game);
 	return (0);
-	// free_img(game);
 }
 
 int	close_window(void *param)
@@ -40,13 +43,16 @@ void	init_struct(t_map *game)
 	game->img.mlx_ptr = mlx_init();
 	game->img.win_ptr = mlx_new_window(game->img.mlx_ptr, game->width
 			* game->pixel, game->height * game->pixel, "next project pls");
-	mlx_hook(game->img.win_ptr, 17, 0, close_window, NULL);
 	if (!game->img.win_ptr)
 	{
 		ft_printf(RED "Mlx failed to open");
 		free_map(game);
+		free_mlx_img(&game->img);
 		return ;
 	}
+	init_img(&game->img, game);
+	draw_all_maps(game, &game->img);
+	game->step_count = 0;
 }
 
 int	main(int argc, char **argv)
@@ -60,10 +66,8 @@ int	main(int argc, char **argv)
 	}
 	initialize_and_check_map(&game, argv[1]);
 	init_struct(&game);
-	init_img(&game.img, &game);
-	draw_map(&game, &game.img);
-	draw_map_2(&game, &game.img);
-	draw_map_3(&game, &game.img);
+	mlx_key_hook(game.img.win_ptr, handle_key, &game);
+	mlx_hook(game.img.win_ptr, DestroyNotify, 0, &close_game, &game);
 	mlx_loop(game.img.mlx_ptr);
 	close_game(&game);
 	free_map(&game);

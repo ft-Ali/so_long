@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:12:20 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/28 13:49:30 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/06/29 17:21:17 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,22 @@
  * es informations sur la carte.
  * @param file Nom du fichier de la carte.
  */
+
 int	initialize_map(t_map *game, char *file)
 {
 	int		map_fd;
 	char	*line_map;
 	char	*line_tmp;
+	int		empty;
 
-	map_fd = open(file, O_DIRECTORY);
-	if (map_fd != -1)
-		(handle_error(game, "Error directory OR Map does not exist"),
-			close(map_fd));
-	map_fd = open(file, O_RDONLY);
-	if (map_fd == -1)
-		handle_error(game, "Map does not exist");
+	empty = 0;
+	map_fd = check_and_open_file(game, file);
 	line_tmp = get_next_line(map_fd);
 	line_map = ft_strdup("");
 	while (line_tmp != NULL)
 	{
+		if (line_tmp[0] == '\n')
+			empty = 1;
 		line_map = ft_freejoin(line_map, line_tmp, ft_strlen(line_map),
 				ft_strlen(line_tmp));
 		free(line_tmp);
@@ -47,6 +46,8 @@ int	initialize_map(t_map *game, char *file)
 	}
 	game->map = ft_split(line_map, '\n');
 	game->height = check_map_height(game->map);
+	if (empty)
+		(free(line_map), handle_error(game, "empty line"));
 	return (free(line_map), ft_empty(game), close(map_fd), 0);
 }
 
@@ -96,6 +97,7 @@ void	initialize_and_check_map(t_map *game, char *path)
 	check_border_colum(game);
 	find_player(game);
 	flood_fill_result(game);
+	game->collectibles_left = game->collectibles;
 }
 
 void	print_map(t_map *game)

@@ -15,7 +15,7 @@ MLX_EX      =   $(MLX_LIB) $(MLX_FLAGS)
 
 
 SO_LONG_SRC	=	srcs/so_long.c srcs/check_map.c srcs/map_init.c srcs/free_error_game.c srcs/ft_backtracking.c \
-				srcs/ressources.c
+				srcs/ressources.c srcs/movement.c
 
 SO_LONG_OBJ	=	$(SO_LONG_SRC:.c=.o)
 
