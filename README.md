@@ -50,35 +50,35 @@ Road map :
 
              - Game checklist :
 
-   - [ ] Create a window using MiniLibX
-      - [ ] Create the required structure to store all the necessary information
+   - [x] Create a window using MiniLibX
+      - [x] Create the required structure to store all the necessary information
 
-   - [ ] Load all the required sprites (images) for your game and store them into memory
+   - [x] Load all the required sprites (images) for your game and store them into memory
 
-   - [ ] Create the different hooks
-      - [ ] key_handler
-      - [ ] mouse_handler (if necessary)
-      - [ ] close_handler, this is a hook on the red cross that closes the program correctly
-      - [ ] loop_hook (=> you game loop)
+   - [x] Create the different hooks
+      - [x] key_handler
+      - [x] mouse_handler (if necessary)
+      - [x] close_handler, this is a hook on the red cross that closes the program correctly
+      - [x] loop_hook (=> you game loop)
         
                - Render checklist :
-   - [ ] Draw the background
-   - [ ] Draw the not movable parts of the map (border)
-   - [ ] Draw the player
+   - [x] Draw the background
+   - [x] Draw the not movable parts of the map (border)
+   - [x] Draw the player
 
                - Key handler :
          
 The key handler, is mainly used to call the update_player_position function when W, A, S or D is pressed or to close the program correctly when we press the ESC key.
-   - [ ] Is the requested new position a Wall ?
-        - [ ] if the new position is a Wall, don't do anything. The subject says that the player should not be able to go through walls
-   - [ ] Is the requested new position inside the map ?
-       - [ ] if the new position is outside the map, don't do anything. Normally this shouldn't happen since the map is enclosed in walls but hey, never too sure.
-       - [ ] the requested new position a Collectible ?
-          - [ ] if yes, update the collected items counter and check
-             - [ ] check if all collectibles have been collected
-                - [ ] if yes, unlock the exit
-      - [ ] update your map 2D array and replace the collectible by a "floor" tile so that it is not drawn in the next iteration of the game loop.
-      - [ ] If the requested new position is not a wall, nor a collectible, nor outside the map, simply set the player position to the requested new position.
+   - [x] Is the requested new position a Wall ?
+        - [x] if the new position is a Wall, don't do anything. The subject says that the player should not be able to go through walls
+   - [x] Is the requested new position inside the map ?
+       - [x] if the new position is outside the map, don't do anything. Normally this shouldn't happen since the map is enclosed in walls but hey, never too sure.
+       - [x] the requested new position a Collectible ?
+          - [x] if yes, update the collected items counter and check
+             - [x] check if all collectibles have been collected
+                - [x] if yes, unlock the exit
+      - [x] update your map 2D array and replace the collectible by a "floor" tile so that it is not drawn in the next iteration of the game loop.
+      - [x] If the requested new position is not a wall, nor a collectible, nor outside the map, simply set the player position to the requested new position.
    
 
 
