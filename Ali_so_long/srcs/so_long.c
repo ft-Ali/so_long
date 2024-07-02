@@ -6,7 +6,7 @@
 /*   By: alsiavos <alsiavos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:03:16 by alsiavos          #+#    #+#             */
-/*   Updated: 2024/06/29 18:11:12 by alsiavos         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:02:32 by alsiavos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 	}
 	initialize_and_check_map(&game, argv[1]);
 	init_struct(&game);
-	mlx_key_hook(game.img.win_ptr, handle_key, &game);
+	mlx_hook(game.img.win_ptr, KeyPress, KeyPressMask, handle_key, &game);
 	mlx_hook(game.img.win_ptr, DestroyNotify, 0, &close_game, &game);
 	mlx_loop(game.img.mlx_ptr);
 	close_game(&game);
